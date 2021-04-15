@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+<nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a class="text-muted" href="{% url 'base' %}">Главная</a>
+        </li>
+        <li class="breadcrumb-item active">{{ category.name }}</li>
+    </ol>
+</nav>
+<div class="row">
+    {% for product in category_products %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card text-center h-100 position-relative" style="background-image: url({{ product.image.url }});">
+            <div class="card-body">
+                <div class="text">
+                    <p class="card-title">
+                        <a class="text-light text-decoration-none" href="{{ product.get_absolute_url }}">
+                            {{ product.title }}
+                        </a>
+                    </p>
+                    <h5 class="text-light">
+                        {{ product.price }} kzt.
+                    </h5>
+                    <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}">
+                        <button class="btn btn-outline-light">
+                        Добавить 
+                        <img class="ml-1" src="./images/shopping-cart.png" width="13" alt="">
+                    </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

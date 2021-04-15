@@ -1,0 +1,15 @@
+1.python manage.py makemigrations
+2.python manage.py migrate
+3.python manage.py createsuperuser
+a)username
+b)email (enter)
+c)pass
+d)y
+
+http://127.0.0.1:8000/admin/
+
+add categories:
+SLUG1:medicine - лекарства 
+SLUG2:corona - корона
+
+
